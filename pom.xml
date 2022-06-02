@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.epam.gomel</groupId>
+    <artifactId>mvc-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>${project.artifactId}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.ver>11</java.ver>
+        <maven.compiler.source>${java.ver}</maven.compiler.source>
+        <maven.compiler.target>${java.ver}</maven.compiler.target>
+        <maven-compiler-plugin.ver>3.8.1</maven-compiler-plugin.ver>
+        <servlet-api.ver>4.0.1</servlet-api.ver>
+        <jstl.ver>1.2</jstl.ver>
+        <tomcat7-maven-plugin.ver>2.2</tomcat7-maven-plugin.ver>
+    </properties>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.ver}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>${tomcat7-maven-plugin.ver}</version>
+                <configuration>
+                    <port>8081</port>
+                    <path>/${project.artifactId}</path>
+                    <warDirectory>target/${project.artifactId}</warDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet-api.ver}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.ver}</version>
+        </dependency>
+    </dependencies>
+</project>
